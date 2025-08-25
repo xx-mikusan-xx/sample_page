@@ -1,0 +1,59 @@
+*{box-sizing:border-box}
+:root{
+  --bg:#f6f8fb;
+  --card:#ffffff;
+  --ink:#1b2430;
+  --muted:#6b7280;
+  --brand:#16a085; /* distinct color */
+  --accent:#2ecc71;
+  --ring:rgba(46,204,113,.35);
+  --border:#e4e7ec;
+}
+html,body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:var(--brand);text-decoration:none}
+.topbar{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:12px 20px}
+.brand{display:flex;gap:10px;align-items:center;font-weight:700}
+.logo{display:inline-flex;width:20px;height:20px;border:2px solid var(--ink);border-radius:4px;align-items:center;justify-content:center;letter-spacing:-2px;font-size:10px}
+.container{max-width:1100px;margin:20px auto;padding:0 16px}
+.steps{display:flex;gap:10px;align-items:center;margin-bottom:16px;color:var(--muted);flex-wrap:wrap}
+.step{display:flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:6px 12px;font-weight:600}
+.step span{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--border);font-size:12px}
+.step.active{color:var(--ink);border-color:var(--brand)}
+.step.active span{background:var(--brand);color:white}
+.arrow{opacity:.5}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+@media (max-width:960px){.grid{grid-template-columns:1fr} .right{order:-1}}
+.left .card, .right .phone{box-shadow:0 10px 20px rgba(0,0,0,.04)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:14px}
+.card-title{font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.sub{font-size:12px;color:var(--muted);margin-top:4px}
+.req{color:#e11d48}
+.field{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.field-label{font-size:13px;color:var(--muted)}
+input[type="text"],input[type="url"],input[type="password"]{border:1px solid var(--border);background:white;border-radius:10px;padding:12px 14px;font-size:15px;outline:none}
+input:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--ring)}
+.btnrow{display:flex;gap:10px;justify-content:flex-end;margin-top:10px;flex-wrap:wrap}
+.btn{appearance:none;border:none;border-radius:12px;padding:10px 16px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#eef2f7;color:#0f172a}
+.btn.primary{background:var(--brand);color:white}
+.btn.secondary{background:#eef2f7;color:#0f172a}
+.btn.success{background:var(--accent);color:white;margin-top:16px;width:100%}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--ink)}
+.right{display:flex;flex-direction:column;align-items:center;gap:8px}
+.phone{background:var(--card);border:1px solid var(--border);border-radius:36px;padding:20px;max-width:380px;width:100%;}
+.notch{height:22px;width:40%;margin:0 auto 12px;background:#0f172a;border-radius:999px}
+.screen{border:1px dashed var(--border);border-radius:20px;display:grid;place-items:center;aspect-ratio:9/16;background:white}
+.placeholder{color:var(--muted);font-size:14px}
+.qr{max-width:75%;height:auto}
+.bottomnav{display:flex;justify-content:space-between;align-items:center;margin-top:20px}
+.flashwrap{margin-bottom:12px}
+.flash{padding:10px 12px;border-radius:10px}
+.flash.error{background:#fee2e2;color:#7f1d1d;border:1px solid #fecaca}
+.flash.ok{background:#dcfce7;color:#14532d;border:1px solid #bbf7d0}
+.footer{color:var(--muted);text-align:center;margin:30px 0}
+.table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.table th,.table td{padding:10px;border-bottom:1px solid var(--border);text-align:left;font-size:14px}
+.table th{background:#fafafa}
+.truncate{max-width:420px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.unlock-wrap{display:grid;place-items:center;min-height:50vh}
+.unlock-card{max-width:420px}
+.hint{font-size:12px;color:var(--muted);}

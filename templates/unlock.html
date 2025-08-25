@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="unlock-wrap">
+  <div class="card unlock-card">
+    <h1 class="card-title">パスワードが必要です</h1>
+    <p>「{{ name or '名称未設定' }}」にアクセスするにはパスワードを入力してください。</p>
+    <form method="post">
+      <label class="field">
+        <input type="password" name="password" placeholder="パスワード">
+      </label>
+      <div class="btnrow">
+        <button class="btn primary" type="submit">続行</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

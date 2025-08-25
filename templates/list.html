@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>保存済みQR</h2>
+<table class="table">
+  <thead><tr><th>作成日時</th><th>名前</th><th>フォルダ</th><th>URL</th><th>リンク</th></tr></thead>
+  <tbody>
+    {% for r in rows %}
+      <tr>
+        <td>{{ r['created_at'][:19].replace('T',' ') }}</td>
+        <td>{{ r['name'] or '-' }}</td>
+        <td>{{ r['folder'] or '-' }}</td>
+        <td class="truncate">{{ r['url'] }}</td>
+        <td><a href="{{ url_for('resolve', slug=r['id']) }}" target="_blank">/r/{{ r['id'] }}</a></td>
+      </tr>
+    {% else %}
+      <tr><td colspan="5">まだありません</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

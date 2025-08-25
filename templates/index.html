@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="steps">
+  <div class="step active"><span>1</span> QRコードの種類</div>
+  <div class="arrow">→</div>
+  <div class="step active"><span>2</span> コンテンツ</div>
+  <div class="arrow">→</div>
+  <div class="step"><span>3</span> QRデザイン</div>
+</section>
+
+<section class="grid">
+  <form class="left" method="post">
+    <div class="card">
+      <div class="card-title">ウェブサイトのご案内 <span class="req">*</span></div>
+      <div class="sub">このQRがリダイレクトするURLを入力。</div>
+      <label class="field">
+        <span class="field-label">ウェブサイトのURL</span>
+        <input name="url" type="url" placeholder="https://example.com/" value="{{ form.url }}" required>
+      </label>
+    </div>
+
+    <div class="card">
+      <div class="card-title">QRコードの名前</div>
+      <label class="field">
+        <input name="name" type="text" placeholder="例: サマーキャンペーン" value="{{ form.name }}">
+      </label>
+    </div>
+
+    <div class="card">
+      <div class="card-title">パスワード</div>
+      <label class="field with-icon">
+        <input name="password" type="password" placeholder="アクセスに必要（任意）" value="{{ form.password }}">
+        <span class="hint">設定するとアクセス時に入力が必要になります</span>
+      </label>
+    </div>
+
+    <div class="card">
+      <div class="card-title">フォルダ</div>
+      <label class="field">
+        <input name="folder" type="text" placeholder="新規または既存フォルダ名" value="{{ form.folder }}">
+      </label>
+    </div>
+
+    <div class="btnrow">
+      <button class="btn secondary" type="reset">戻る</button>
+      <button class="btn" name="action" value="preview" type="submit">プレビュー</button>
+      <button class="btn primary" name="action" value="create" type="submit">QRコード</button>
+    </div>
+  </form>
+
+  <div class="right">
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+        {% if qr_png_b64 %}
+          <img class="qr" src="data:image/png;base64,{{ qr_png_b64 }}" alt="QR preview">
+        {% else %}
+          <div class="placeholder">ここにQRが表示されます</div>
+        {% endif %}
+      </div>
+    </div>
+    <form method="post" action="{{ url_for('download') }}">
+      <input type="hidden" name="url" value="{{ form.url }}">
+      <input type="hidden" name="name" value="{{ form.name }}">
+      {% if slug %}<input type="hidden" name="slug" value="{{ slug }}">{% endif %}
+      <button class="btn success" type="submit">PNGをダウンロード</button>
+    </form>
+  </div>
+</section>
+
+<section class="bottomnav">
+  <a class="btn ghost" href="#">戻る</a>
+  <a class="btn primary" href="#">次へ</a>
+</section>
+{% endblock %}
