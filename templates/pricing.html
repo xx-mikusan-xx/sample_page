@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="alert error"><span class="icon">!</span> このQR コードを再度アクティブ化するには、いずれかのプランに加入する必要があります。</div>
+
+<section class="pricing-header">
+  <h1 class="pricing-title">プランと料金</h1>
+  <p class="pricing-sub">QRコードを再有効化するプランを選択してください</p>
+</section>
+
+<section class="pricing-grid">
+  {% for p in plans %}
+  <label class="plan {{ 'popular' if p.popular }}">
+    {% if p.popular %}<div class="badge">最も人気</div>{% endif %}
+    <div class="plan-row top">
+      <input type="radio" name="plan" {% if loop.first %}checked{% endif %}>
+      <div class="plan-title">{{ p.title }}</div>
+    </div>
+    <div class="price">{{ p.price }}</div>
+    <div class="note">{{ p.note }}</div>
+  </label>
+  {% endfor %}
+</section>
+
+<div class="pricing-cta">
+  <a href="{{ url_for('index') }}" class="btn primary">続行する</a>
+</div>
+{% endblock %}

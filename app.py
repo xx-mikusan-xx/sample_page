@@ -122,6 +122,14 @@ def list_qrs():
     rows = conn.execute("SELECT id, name, folder, url, created_at FROM qrs ORDER BY created_at DESC").fetchall()
     conn.close()
     return render_template("list.html", rows=rows)
-    
+
+@app.route("/pricing")
+def pricing():
+    plans = [
+        {"id": "monthly", "title": "毎月請求", "price": "¥ 3,000 JPY / 月",  "popular": False},
+        {"id": "yearly", "title": "毎年請求", "price": "¥ 1,000 JPY / 月", "popular": True},
+    ]
+    return render_template("pricing.html", plans=plans)
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=2000, debug=True)

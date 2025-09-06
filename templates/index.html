@@ -37,7 +37,7 @@
       <div class="notch"></div>
       <div class="screen">
         {% if qr_png_b64 %}
-          <img class="qr" src="data:image/png;base64,{{ qr_png_b64 }}" alt="QR preview">
+          <img class="qr" src="{{ url_for('static', filename='Untitled.png') }}" alt="QR preview">
         {% else %}
           <div class="placeholder">
             <svg width="56" height="56" viewBox="0 0 24 24" aria-hidden="true">
